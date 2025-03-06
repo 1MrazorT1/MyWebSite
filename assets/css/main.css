@@ -98,7 +98,7 @@ input, select, textarea {
 	}
 
 	body {
-		background: #312450;
+		background: #343335;
 	}
 
 		body.is-preload *, body.is-preload *:before, body.is-preload *:after {
@@ -3009,12 +3009,12 @@ input, select, textarea {
 			border-radius: 0;
 			display: block;
 			position: relative;
-			width: 25em;
 		}
 
 			.spotlights > section > .image img {
-				border-radius: 0;
 				display: block;
+  				width: 100%;
+  				height: auto;
 			}
 
 			.spotlights > section > .image:before {
@@ -3022,15 +3022,15 @@ input, select, textarea {
 				-webkit-transition: opacity 1s ease;
 				-ms-transition: opacity 1s ease;
 				transition: opacity 1s ease;
-				background: rgba(49, 36, 80, 0.9);
-				content: '';
+				background: none !important;
+				content: none !important;
 				display: block;
 				height: 100%;
 				left: 0;
 				opacity: 0;
-				position: absolute;
+				position: static;
 				top: 0;
-				width: 100%;
+				width: auto;
 			}
 
 		.spotlights > section > .content {
@@ -3047,7 +3047,6 @@ input, select, textarea {
 			-webkit-justify-content: center;
 			-ms-justify-content: center;
 			justify-content: center;
-			width: 50em;
 			-ms-flex: 1;
 		}
 
@@ -3099,10 +3098,7 @@ input, select, textarea {
 				display: block;
 			}
 
-				.spotlights > section > .image {
-					width: 100%;
-					height: 50vh;
-				}
+				
 
 				.spotlights > section > .content {
 					width: 100%;
@@ -3236,7 +3232,7 @@ input, select, textarea {
 			}
 
 		.wrapper.alt {
-			background-color: #261c3e;
+			background-color: #484848;
 		}
 
 		.wrapper.style1 {
@@ -3907,3 +3903,36 @@ input, select, textarea {
 			}
 
 		}
+		.spotlights > section > .image {
+			
+			width: auto !important;    
+			max-width: 100% !important;
+			background: none !important;   
+			position: relative !important; 
+		  }
+		  
+		  .spotlights > section > .content {
+			width: auto !important;
+			max-width: 100% !important;
+		  }
+		  .spotlights > section {
+			display: flex !important;
+			flex-wrap: wrap;          
+			align-items: center;      
+		  }
+		  
+		  .spotlights > section > .image,
+		  .spotlights > section > .content {
+			flex: 1 1 50%;            
+			max-width: 50%;           
+			box-sizing: border-box;
+		  }
+		  .spotlights > section > .image:before {
+			content: none !important;
+			background: none !important;
+		  }
+		  .spotlights > section > .image img {
+			width: 100%;
+			height: 500px;
+			display: block;
+		  }
