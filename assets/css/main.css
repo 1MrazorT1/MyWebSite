@@ -3937,8 +3937,10 @@ input, select, textarea {
 			display: block;
 		  }
 
-/* === custom video embed rules === */
 .image.video {
+  display: block           !important;
+  width: 100%              !important;
+  max-width: 100%          !important;
   position: relative;
   overflow: hidden;
 }
@@ -3946,15 +3948,58 @@ input, select, textarea {
 .image.video::before {
   content: "";
   display: block;
-  padding-top: 56.25%;   /* keeps 16:9 ratio */
+  padding-top: 56.25%;  
 }
 
 .image.video iframe {
   position: absolute;
-  inset: 0;              /* top/right/bottom/left = 0 */
+  inset: 0;        
   width: 100%;
   height: 100%;
   border: 0;
-  border-radius: 0.25em; /* same rounded corners as photos */
+  border-radius: 0.25em; 
   object-fit: cover;
+}
+
+.desktop-only { display: block !important; }
+.mobile-only  { display: none  !important; }
+
+@media screen and (max-width: 736px) {
+  .desktop-only { display: none  !important; }
+  .mobile-only  { display: block !important; }
+}
+
+.image.video.desktop-only {
+  display: block !important;
+}
+.image.video.mobile-only {
+  display: none  !important;
+}
+
+@media screen and (max-width: 736px) {
+  .image.video.desktop-only {
+    display: none  !important;
+  }
+  .image.video.mobile-only {
+    display: block !important;
+  }
+}
+
+@media screen and (max-width: 980px) {
+  .spotlights > section {
+    flex-direction: column !important;
+    min-height: auto      !important;
+  }
+
+  .spotlights > section > .image,
+  .spotlights > section > .content {
+    flex:      1 1 100% !important;
+    max-width: 100%     !important;
+  }
+
+  .spotlights > section > .image img {
+    display: block;
+    width:  100%;
+    height: auto      !important;
+  }
 }
