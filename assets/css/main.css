@@ -3931,70 +3931,80 @@ input, select, textarea {
 			content: none !important;
 			background: none !important;
 		  }
-		  .spotlights > section > .image img {
-			width: 100%;
-			height: 500px;
-			display: block;
-		  }
+		  
+          .spotlights > section > .image img { height: auto; }
+	          
+		  
+          .spotlights > section > .image:not(.video) {
+              aspect-ratio: 16 / 9;
+              overflow: hidden;
+          }
+          .spotlights > section > .image:not(.video) img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+          }
 
+@media (max-width: 736px) {
 
-@media screen and (max-width: 736px) {
-  /* Make the whole spotlight stack vertically */
   .spotlights > section {
-    flex-direction: column !important;
-    min-height: auto      !important;
+    flex-direction: column;
+    min-height: auto;
   }
 
-  /* Only target non-video images + content for full width */
-  .spotlights > section > .image:,
+  .spotlights > section > .image:not(.video),
   .spotlights > section > .content {
-    flex:      1 1 100% !important;
-    max-width: 100%     !important;
+    flex: 1 1 100%;
+    max-width: 100%;
   }
 
-  /* Ensure <img> inside photo-blocks fill their wrapper */
-  .spotlights > section > .image:img {
-    display: block !important;
-    width:   100%       !important;
-    height:  auto       !important;
+  .spotlights > section > .image img {
+    display: block;
+    width: 100%;
+    height: auto;
   }
 }
-/* ------------------------------------------
-   VIDEO EMBED (aspect-ratio + show/hide swap)
-   ------------------------------------------ */
 
-/* 1) Base video container: full-width + 16:9 */
+@media (min-width: 737px) and (max-width: 980px) {
+
+  .spotlights > section {
+    flex-wrap: wrap;
+  }
+
+  .spotlights > section > .image,
+  .spotlights > section > .content {
+    flex: 1 1 50%;
+    max-width: 50%;
+  }
+}
+
 .image.video {
-  display: block !important;
-  width: 100%   !important;
-  aspect-ratio: 16 / 9 !important;
-  position: relative !important;
-  overflow: hidden  !important;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  position: relative;
+  overflow: hidden;
 }
 
-/* Fill the container with the iframe */
 .image.video iframe {
-  position: absolute !important;
-  inset: 0             !important; /* top/right/bottom/left = 0 */
-  width: 100%          !important;
-  height: 100%         !important;
-  border: 0            !important;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
 }
 
-/* 2) Show/hide logic */
-.image.video.desktop-only {
-  display: block !important;
-}
-.image.video.mobile-only {
-  display: none  !important;
+.image.video.mobile-only,
+.image.video.tablet-only,
+.image.video.desktop-only { display:none; }
+
+@media (max-width:736px){
+  .image.video.mobile-only { display:block; }
 }
 
-/* On phones (≤736px): swap which one is visible */
-@media screen and (max-width: 736px) {
-  .image.video.desktop-only {
-    display: none  !important;
-  }
-  .image.video.mobile-only {
-    display: block !important;
-  }
+@media (min-width:737px) and (max-width:980px){
+  .image.video.tablet-only { display:block; }
+}
+
+@media (min-width:981px){
+  .image.video.desktop-only { display:block; }
 }
