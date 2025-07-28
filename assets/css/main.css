@@ -3978,18 +3978,22 @@ input, select, textarea {
 }
 
 @media (min-width:737px) and (max-width:980px){
+
   .spotlights > section{flex-wrap:wrap;}
 
   .spotlights > section > .image,
   .spotlights > section > .content{
-    flex:1 1 50%;max-width:50%;
+    flex:1 1 50%;
+    max-width:50%;
   }
 
   .spotlights > section > .image.video{width:auto;}
 
   .image.video.tablet-only{
     display:block;
-    flex:1 1 100%;max-width:100%;
+    flex:1 1 50%;
+    max-width:50%;
+    width:auto;
   }
 }
 
